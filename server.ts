@@ -342,7 +342,7 @@ async function startServer() {
                 </div>
                 <p style="margin-top: 24px;">To access your active Bible study modules, view live recordings, download study pack PDFs, or update your profiles, log in to your personal platform portal.</p>
                 <div style="text-align: center; margin: 28px 0;">
-                  <a href="https://pastor-ken.vercel.app" style="background-color: #1c1917; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 14px; display: inline-block;">Go to Study Portal</a>
+                  <a href="https://pastor-ken.vercel.app" style="background-color: #1c1917; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 14px; display: inline-block;">Go to Pastor Ken</a>
                 </div>
               </div>
               <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 24px 0;" />
