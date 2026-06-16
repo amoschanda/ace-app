@@ -1,11 +1,11 @@
-# Ace App — Pastor Ken's Ministry & Learning Portal
+# Pastor Ken — Ministry & Learning Portal
 
 [![Deployment status](https://github.com/amoschanda/ace-app/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/amoschanda/ace-app/actions/workflows/ci.yml)
 [![Live site](https://img.shields.io/badge/live-pastor--ken.vercel.app-brightgreen)](https://pastor-ken.vercel.app)
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/amoschanda/ace-app)
 
-Live design replicating **pastor-ken.vercel.app** with Clerk authentication, Resend broadcaster, and a unified Vite + Express deployable.
+Live ministry portal for **pastor-ken.vercel.app** with Clerk authentication, Resend broadcasting, and a unified Vite + Express deployable.
 
 ## Stack
 - React 19 + Vite 6 (Tailwind v4 inline theme)
@@ -13,6 +13,7 @@ Live design replicating **pastor-ken.vercel.app** with Clerk authentication, Res
 - File-based JSON store at `src/db/db.json`
 - **Clerk** for auth (modal sign-in, UserButton, email-based admin gate)
 - **Resend** for live newsletter dispatch
+- **Vercel** for CI/CD and production deployment
 
 ## Local Development
 ```bash
@@ -46,10 +47,9 @@ PORT=3000 NODE_ENV=production node dist/server.cjs
 
 ## Vercel Deployment
 1. Push this repo to GitHub.
-2. Import into Vercel, framework preset = "Other" (or Vite). Build command `yarn build`, output `dist`.
-3. Override "Install Command" to `yarn install` and create a `vercel.json` that boots `dist/server.cjs` as a Node serverless function — or use a Render/Fly/Railway Node host if you prefer a long-running server (recommended, because `clerkMiddleware()` keeps a small JWKS cache).
-4. Add the **same env vars** in Vercel → Project → Settings → Environment Variables (Production + Preview).
-5. In your Clerk dashboard, add your Vercel domain to **Allowed origins** and update the **Redirect URI** if you use OAuth.
+2. Vercel is connected to `main` for automatic preview and production deploys through GitHub Actions.
+3. Add the **same env vars** in Vercel → Project → Settings → Environment Variables (Production + Preview).
+4. In your Clerk dashboard, add your Vercel domain to **Allowed origins** and update the **Redirect URI** if you use OAuth.
 
 ## File Layout
 ```
@@ -69,4 +69,7 @@ ace-app/
 │   │   └── LiveBroadcast.tsx
 │   └── db/store.ts           # JSON file persistence
 └── package.json
+
+## Live URL
+- Production: https://pastor-ken.vercel.app
 ```
