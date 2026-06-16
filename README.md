@@ -1,6 +1,7 @@
 # Ace App — Pastor Ken's Ministry & Learning Portal
 
 [![Deployment status](https://github.com/amoschanda/ace-app/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/amoschanda/ace-app/actions/workflows/ci.yml)
+[![Live site](https://img.shields.io/badge/live-pastor--ken.vercel.app-brightgreen)](https://pastor-ken.vercel.app)
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/amoschanda/ace-app)
 
