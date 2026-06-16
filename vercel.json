@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "buildCommand": "yarn build",
+  "outputDirectory": "dist",
+  "installCommand": "yarn install",
+  "builds": [
+    {
+      "src": "dist/server.cjs",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/dist/server.cjs" },
+    { "src": "/assets/(.*)", "dest": "/dist/assets/$1" },
+    { "src": "/(.*\\.(svg|png|jpg|jpeg|ico|webp|woff2?|ttf|map|zip))", "dest": "/dist/$1" },
+    { "src": "/(.*)", "dest": "/dist/server.cjs" }
+  ]
+}
