@@ -2,7 +2,7 @@
 
 [![Deployment status](https://github.com/amoschanda/ace-app/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/amoschanda/ace-app/actions/workflows/ci.yml)
 
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/OWNER/REPO)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/amoschanda/ace-app)
 
 Live design replicating **pastor-ken.vercel.app** with Clerk authentication, Resend broadcaster, and a unified Vite + Express deployable.
 
