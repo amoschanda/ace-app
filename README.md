@@ -51,6 +51,9 @@ PORT=3000 NODE_ENV=production node dist/server.cjs
 3. Add the **same env vars** in Vercel → Project → Settings → Environment Variables (Production + Preview).
 4. In your Clerk dashboard, add your Vercel domain to **Allowed origins** and update the **Redirect URI** if you use OAuth.
 
+## Live URL
+- https://pastor-ken.vercel.app
+
 ## File Layout
 ```
 ace-app/

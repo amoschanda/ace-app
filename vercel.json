@@ -4,9 +4,7 @@
   "buildCommand": "yarn build",
   "outputDirectory": "dist",
   "routes": [
-    { "src": "/api/(.*)", "dest": "/dist/server.cjs" },
-    { "src": "/assets/(.*)", "dest": "/dist/assets/$1" },
-    { "src": "/(.*\.(svg|png|jpg|jpeg|ico|webp|woff2?|ttf|map|zip))", "dest": "/dist/$1" },
-    { "src": "/(.*)", "dest": "/dist/server.cjs" }
+    { "src": "/(.*\\.(svg|png|jpg|jpeg|ico|webp|woff2?|ttf|map|zip))", "dest": "/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
