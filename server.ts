@@ -11,6 +11,11 @@ dotenv.config();
 async function startServer() {
   const app = express();
   const PORT = Number(process.env.PORT) || 3000;
+  const clerkPublishableKey =
+    process.env.CLERK_PUBLISHABLE_KEY ||
+    process.env.VITE_CLERK_PUBLISHABLE_KEY ||
+    process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ||
+    "pk_test_aW5ub2NlbnQtb3dsLTUuY2xlcmsuYWNjb3VudHMuZGV2JA";
 
   // Middleware for parsing JSON requests
   app.use(express.json());
@@ -20,7 +25,7 @@ async function startServer() {
   // -------------------------------------------------------------------
   // Wrap Clerk middleware so an unparseable Bearer token returns 401 (not Express 500).
   const baseClerk = clerkMiddleware({
-    publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
+    publishableKey: clerkPublishableKey,
     secretKey: process.env.CLERK_SECRET_KEY,
   });
   app.use((req: Request, res: Response, next: NextFunction) => {
@@ -342,7 +347,7 @@ async function startServer() {
                 </div>
                 <p style="margin-top: 24px;">To access your active Bible study modules, view live recordings, download study pack PDFs, or update your profiles, log in to your personal platform portal.</p>
                 <div style="text-align: center; margin: 28px 0;">
-                  <a href="https://pastor-ken.vercel.app" style="background-color: #1c1917; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 14px; display: inline-block;">Go to Pastor Ken</a>
+                  <a href="https://pastor-ken.vercel.app" style="background-color: #1c1917; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 14px; display: inline-block;">Go to Study Portal</a>
                 </div>
               </div>
               <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 24px 0;" />
