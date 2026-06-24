@@ -1,78 +1,48 @@
-# Pastor Ken — Ministry & Learning Portal
+# Ace AI Social Manager
 
-[![Deployment status](https://github.com/amoschanda/ace-app/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/amoschanda/ace-app/actions/workflows/ci.yml)
-[![Live site](https://img.shields.io/badge/live-pastor--ken.vercel.app-brightgreen)](https://pastor-ken.vercel.app)
+The ultimate AI-powered dashboard to manage your social presence, audit your content, and automate workflows via Pipedream.
 
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/amoschanda/ace-app)
+## Features
+- **AI TikTok Auditor**: Automatically scan your TikTok profile (mocked) and get AI-driven recommendations on which videos to delete to improve engagement.
+- **Pipedream Integration**: Easily connect your AI auditor to Pipedream webhooks to trigger downstream automations.
+- **Modern Dashboard**: Track your social stats and recent AI activities in a sleek, user-friendly interface.
+- **Secure Auth**: Powered by Clerk for a seamless sign-in experience.
 
-Live ministry portal for **pastor-ken.vercel.app** with Clerk authentication, Resend broadcasting, and a unified Vite + Express deployable.
+## Tech Stack
+- **Frontend**: React 19, Vite, Tailwind CSS (v4)
+- **Backend**: Node.js, Express, TypeScript
+- **AI**: Google Gemini (AI content analysis)
+- **Database**: Supabase (PostgreSQL)
+- **Auth**: Clerk
 
-## Stack
-- React 19 + Vite 6 (Tailwind v4 inline theme)
-- Express + TypeScript (single-server: serves both `/api/*` and the SPA)
-- File-based JSON store at `src/db/db.json`
-- **Clerk** for auth (modal sign-in, UserButton, email-based admin gate)
-- **Resend** for live newsletter dispatch
-- **Vercel** for CI/CD and production deployment
+## Getting Started
 
-## Local Development
-```bash
-yarn install
-cp .env.example .env   # fill in your secrets (see below)
-yarn dev               # runs tsx server.ts on PORT (default 3000)
-```
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-## Production Build
-```bash
-yarn build             # builds Vite -> dist/ and bundles server -> dist/server.cjs
-PORT=3000 NODE_ENV=production node dist/server.cjs
-```
+2. **Set up Environment Variables**:
+   Create a `.env` file with:
+   - `VITE_CLERK_PUBLISHABLE_KEY`
+   - `CLERK_SECRET_KEY`
+   - `RESEND_API_KEY`
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+   - `GEMINI_API_KEY`
 
-## Environment Variables (`.env`)
-| Key | Purpose |
-| --- | --- |
-| `VITE_CLERK_PUBLISHABLE_KEY` | Exposed to React, initialises `<ClerkProvider>` |
-| `CLERK_PUBLISHABLE_KEY` | Mirror of above on the server (Clerk Express middleware) |
-| `CLERK_SECRET_KEY` | Server-only; verifies session tokens & fetches user |
-| `RESEND_API_KEY` | Required for `/api/admin/send-email` to actually dispatch |
-| `ADMIN_EMAILS` | Comma-separated list of pastor/admin emails (lowercased compare) |
-| `ADMIN_BROADCAST_FROM` | `Name <onboarding@resend.dev>` style FROM |
-| `ADMIN_BROADCAST_DEFAULT_TO` | Default recipient when no test email entered |
-| `PORT` | Server port (default 3000) |
+3. **Run in Development**:
+   ```bash
+   npm run dev
+   ```
 
-## Admin / Pastor Console
-- Click **Member Sign-In** → Clerk modal → sign in/up.
-- The `Pastor Console` tab inside the portal probes `/api/me`. If the signed-in email is in `ADMIN_EMAILS`, the dashboard unlocks; otherwise a polite "Not Authorised" notice is shown.
-- All `/api/admin/*` routes are protected by the `requireAdmin` middleware in `server.ts` — even direct API calls without a valid admin session are rejected.
+4. **Build for Production**:
+   ```bash
+   npm run build
+   ```
 
-## Vercel Deployment
-1. Push this repo to GitHub.
-2. Vercel is connected to `main` for automatic preview and production deploys through GitHub Actions.
-3. Add the **same env vars** in Vercel → Project → Settings → Environment Variables (Production + Preview).
-4. In your Clerk dashboard, add your Vercel domain to **Allowed origins** and update the **Redirect URI** if you use OAuth.
-
-## Live URL
-- https://pastor-ken.vercel.app
-
-## File Layout
-```
-ace-app/
-├── server.ts                 # Express API + Vite middleware (dev) / static (prod)
-├── src/
-│   ├── main.tsx              # ClerkProvider bootstrap
-│   ├── App.tsx               # Landing + Portal layout
-│   ├── index.css             # Tailwind v4 + theme tokens (ink/gold)
-│   ├── components/
-│   │   ├── AdminPanel.tsx    # Clerk-gated pastor console (CRUD + broadcaster)
-│   │   ├── SermonHub.tsx
-│   │   ├── TheologicalLibrary.tsx
-│   │   ├── FaithAcademy.tsx
-│   │   ├── EventCalendar.tsx
-│   │   ├── ResourceHub.tsx
-│   │   └── LiveBroadcast.tsx
-│   └── db/store.ts           # JSON file persistence
-└── package.json
-
-## Live URL
-- Production: https://pastor-ken.vercel.app
-```
+## Workflow
+1. Sign in via Clerk.
+2. Navigate to **AI TikTok Auditor** to run a content scan.
+3. Review AI suggestions for video deletions.
+4. Use the **Pipedream** tab to connect your audit results to other apps.
