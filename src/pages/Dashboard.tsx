@@ -55,9 +55,11 @@ export function Dashboard() {
                   <Zap className="w-5 h-5 text-amber-700" />
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-stone-900">AI Audit Completed</p>
+                  <p className="text-sm font-medium text-stone-900">
+                    {audit.videos_data ? "AI TikTok Audit" : "LinkedIn Workflow Execution"}
+                  </p>
                   <p className="text-xs text-stone-500">
-                    Scanned on {new Date(audit.created_at).toLocaleString()}
+                    {new Date(audit.created_at).toLocaleString()}
                   </p>
                 </div>
                 <button className="text-xs font-semibold text-amber-700 hover:underline">View Report</button>

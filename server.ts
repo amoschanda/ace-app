@@ -107,14 +107,23 @@ async function startServer() {
   });
 
   app.post("/api/pipedream/trigger", async (req, res) => {
+    const auth = getAuth(req);
     const { webhookUrl, payload } = req.body;
     if (!webhookUrl) return res.status(400).json({ error: "Webhook URL required" });
 
     try {
+      const fullPayload = {
+        ...payload,
+        user: {
+          id: auth.userId,
+          email: (await clerkClient.users.getUser(auth.userId || "")).primaryEmailAddress?.emailAddress
+        }
+      };
+
       const response = await fetch(webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(fullPayload),
       });
       res.json({ success: response.ok });
     } catch (err) {

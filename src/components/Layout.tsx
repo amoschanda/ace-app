@@ -1,10 +1,11 @@
 import { UserButton } from "@clerk/clerk-react";
-import { LayoutDashboard, ShieldCheck, Share2, LogOut } from "lucide-react";
+import { LayoutDashboard, ShieldCheck, Share2, LogOut, Linkedin } from "lucide-react";
 
 export function Layout({ children, setCurrentPage, currentPage }: any) {
   const navItems = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
     { id: "tiktok", label: "AI TikTok Auditor", icon: ShieldCheck },
+    { id: "linkedin", label: "LinkedIn AI Workflow", icon: Linkedin },
     { id: "pipedream", label: "Pipedream", icon: Share2 },
   ];
 

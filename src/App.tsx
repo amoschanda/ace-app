@@ -2,6 +2,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-reac
 import { Layout } from "./components/Layout";
 import { Dashboard } from "./pages/Dashboard";
 import { TikTokAuditor } from "./pages/TikTokAuditor";
+import { LinkedInWorkflow } from "./pages/LinkedInWorkflow";
 import { PipedreamConnections } from "./pages/PipedreamConnections";
 import { useState } from "react";
 
@@ -14,6 +15,7 @@ export default function App() {
         <Layout setCurrentPage={setCurrentPage} currentPage={currentPage}>
           {currentPage === "dashboard" && <Dashboard />}
           {currentPage === "tiktok" && <TikTokAuditor />}
+          {currentPage === "linkedin" && <LinkedInWorkflow />}
           {currentPage === "pipedream" && <PipedreamConnections />}
         </Layout>
       </SignedIn>
