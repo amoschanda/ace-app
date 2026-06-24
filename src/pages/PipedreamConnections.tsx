@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Share2, Plus, ExternalLink, Play } from "lucide-react";
 
 export function PipedreamConnections() {
-  const [webhookUrl, setWebhookUrl] = useState("");
+  const [webhookUrl, setWebhookUrl] = useState(import.meta.env.VITE_PIPEDREAM_WEBHOOK_URL || "");
   const [payload, setPayload] = useState('{"message": "Hello from Ace AI!"}');
   const [status, setStatus] = useState<string | null>(null);
 
